@@ -1,6 +1,0 @@
-@StockTraderAPI_HostAddress = http://localhost:5119
-
-GET {{StockTraderAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

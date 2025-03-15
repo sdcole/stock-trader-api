@@ -10,7 +10,10 @@ builder.Services.AddCors(options =>
 });
 
 
-// Add services to the container.
+
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())  // Set the base path
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
