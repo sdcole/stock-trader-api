@@ -47,7 +47,7 @@ namespace StockTraderAPI.Controllers
                         break;
 
                     case "1y":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute  -bars?ticker=" + ticker + "&startTime=" + DateTime.UtcNow.AddYears(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/daily-bars?ticker=" + ticker + "&startTime=" + DateTime.UtcNow.AddYears(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
                 }
 
