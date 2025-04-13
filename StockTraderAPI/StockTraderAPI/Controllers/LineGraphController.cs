@@ -18,7 +18,7 @@ namespace StockTraderAPI.Controllers
         }
 
         [HttpGet("v1/line-graph")]
-        public async Task<IActionResult> GetLineGraphData(string ticker, string timeframe)
+        public async Task<IActionResult> GetLineGraphData(string symbol, string timeframe)
         {
             try
             {
@@ -27,27 +27,27 @@ namespace StockTraderAPI.Controllers
                 switch (timeframe)
                 {
                     case "1d":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + ticker + "&startTime=" + DateTime.UtcNow.AddDays(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + symbol + "&startTime=" + DateTime.UtcNow.AddDays(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
 
                     case "7d":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + ticker + "&startTime=" + DateTime.UtcNow.AddDays(-7).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + symbol + "&startTime=" + DateTime.UtcNow.AddDays(-7).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
 
                     case "1m":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + ticker + "&interval=1h&startTime=" + DateTime.UtcNow.AddDays(-30).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + symbol + "&interval=1h&startTime=" + DateTime.UtcNow.AddDays(-30).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
 
                     case "3m":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + ticker + "&interval=1h&startTime=" + DateTime.UtcNow.AddMonths(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/minute-bars?ticker=" + symbol + "&interval=1h&startTime=" + DateTime.UtcNow.AddMonths(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
 
                     case "6m":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/daily-bars?ticker=" + ticker + "&startTime=" + DateTime.UtcNow.AddMonths(-6).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/daily-bars?ticker=" + symbol + "&startTime=" + DateTime.UtcNow.AddMonths(-6).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
 
                     case "1y":
-                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/daily-bars?ticker=" + ticker + "&startTime=" + DateTime.UtcNow.AddYears(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
+                        response = await client.GetAsync($"{_configuration["BASE_URL"]}/api/market/v1/daily-bars?ticker=" + symbol + "&startTime=" + DateTime.UtcNow.AddYears(-1).ToUniversalTime() + "&endTime=" + DateTime.UtcNow);
                         break;
                 }
 
