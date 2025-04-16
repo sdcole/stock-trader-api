@@ -12,5 +12,7 @@ Web App <--> App API <--> Rest API <--> DB
         - GET Request that returns data based off of the view requested of the UI's line graph.
         - Usage: Symbol (company stock symbol to search), Timeframe (The timeframe range to provide data for.)
 # Change Log
+- 1.0.1 LineGraph Controller Updates
+    - Added endpoints to that the UI cna get 5y data.
 - 1.0.0 Initial Release
     - Initial release with basic functionality. Interacts between Web app and rest api adding a layer of security.
